@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzh.dao.MenuMapper">
+    <select id="selectPermsById" resultType="java.lang.String">
+        select DISTINCT D.perms FROM sys_user_role AS A LEFT JOIN sys_role As B
+        on A.role_id = B.id 	LEFT JOIN sys_role_menu AS C
+        on B.id = C.role_id LEFT JOIN sys_menu AS D
+        on C.menu_id = D.id
+        WHERE A.user_id = #{id}
+        AND b.`status` = 0 AND d.`status` = 0
+    </select>
+</mapper>
